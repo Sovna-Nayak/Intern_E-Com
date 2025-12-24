@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from './Button';
+import Button from '../components/Button'; // Correct path to Button component
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -41,32 +41,18 @@ const Login = () => {
     }
 
     try {
-      // In a real app, you would make an API call here
-      // For demo purposes, we'll simulate an API call
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Demo login - in real app, verify with backend
-      if (formData.email === 'demo@example.com' && formData.password === 'password') {
-        // Store user token/info in localStorage
-        localStorage.setItem('user', JSON.stringify({
-          email: formData.email,
-          name: 'Demo User',
-          token: 'demo-token-123'
-        }));
-        
-        navigate('/');
-        window.location.reload(); // Refresh to update auth state
-      } else {
-        // Simulate successful login for any valid credentials in demo
-        localStorage.setItem('user', JSON.stringify({
-          email: formData.email,
-          name: formData.email.split('@')[0],
-          token: `user-token-${Date.now()}`
-        }));
-        
-        navigate('/');
-        window.location.reload();
-      }
+      // Demo login logic
+      localStorage.setItem('user', JSON.stringify({
+        email: formData.email,
+        name: formData.email.split('@')[0],
+        token: `user-token-${Date.now()}`
+      }));
+      
+      navigate('/');
+      window.location.reload(); // Refresh to update auth state
     } catch (err) {
       setError('Login failed. Please try again.');
     } finally {

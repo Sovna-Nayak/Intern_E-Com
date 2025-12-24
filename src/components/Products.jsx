@@ -1,5 +1,4 @@
-import { useState } from "react";
-import {products} from "../components/product";
+import { useState } from "react"; 
 import ProductCard from "./ProductCard";
 import ProductFilter from "./ProductFilter";
 
@@ -10,7 +9,7 @@ const Products = () => {
     price: 2000,
   });
 
-  const filteredProducts = productsData.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     return (
       (filters.size === "" || product.size === filters.size) &&
       (filters.color === "" || product.color === filters.color) &&

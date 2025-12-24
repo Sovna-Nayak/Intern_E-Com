@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Heart, Eye } from "lucide-react";
-import { useCart } from "../components/CartContext";
-import { useWishlist } from "../components/WishlistContext";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import Rating from "./Rating";
 
 const ProductCard = ({ product }) => {

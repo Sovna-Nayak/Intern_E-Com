@@ -117,4 +117,3 @@ export const products = [
   }
 ];
 
-export const categories = ['T-Shirts', 'Hoodies', 'Jeans', 'Ethnic Wear', 'Jackets'];
