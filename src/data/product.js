@@ -10,7 +10,7 @@ export const products = [
     reviews: 128,
     image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     description: 'Premium quality cotton t-shirt with comfortable fit',
-    sizes: ['S', 'M', 'L', 'XL'],
+    // sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Black', 'White', 'Gray'],
     inStock: true
   },
@@ -25,7 +25,7 @@ export const products = [
     reviews: 89,
     image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop',
     description: 'Warm and comfortable hooded sweatshirt',
-    sizes: ['M', 'L', 'XL'],
+    // sizes: ['M', 'L', 'XL'],
     colors: ['Black', 'Blue', 'Green'],
     inStock: true
   },
@@ -40,7 +40,7 @@ export const products = [
     reviews: 234,
     image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w-400&h=400&fit=crop',
     description: 'Slim fit jeans with stretch fabric',
-    sizes: ['28', '30', '32', '34'],
+    // sizes: ['28', '30', '32', '34'],
     colors: ['Blue', 'Black'],
     inStock: true
   },
@@ -55,7 +55,7 @@ export const products = [
     reviews: 156,
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop',
     description: 'Traditional Indian kurta with embroidery',
-    sizes: ['S', 'M', 'L'],
+    // sizes: ['S', 'M', 'L'],
     colors: ['White', 'Blue', 'Beige'],
     inStock: true
   },
@@ -68,7 +68,7 @@ export const products = [
     reviews: 67,
     image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop',
     description: 'Cotton t-shirt with unique graphic print',
-    sizes: ['S', 'M', 'L'],
+    // sizes: ['S', 'M', 'L'],
     colors: ['Black', 'Red'],
     inStock: true
   },
@@ -81,7 +81,7 @@ export const products = [
     reviews: 92,
     image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&h=400&fit=crop',
     description: 'Lightweight zip-up hoodie',
-    sizes: ['M', 'L', 'XL'],
+    // sizes: ['M', 'L', 'XL'],
     colors: ['Gray', 'Black'],
     inStock: true
   },
@@ -96,7 +96,7 @@ export const products = [
     reviews: 178,
     image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
     description: 'Classic denim jacket',
-    sizes: ['S', 'M', 'L'],
+    // sizes: ['S', 'M', 'L'],
     colors: ['Blue', 'Black'],
     inStock: false
   },
@@ -111,7 +111,7 @@ export const products = [
     reviews: 45,
     image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=400&fit=crop',
     description: 'Premium silk sherwani set',
-    sizes: ['M', 'L'],
+    // sizes: ['M', 'L'],
     colors: ['Gold', 'Maroon'],
     inStock: true
   }
