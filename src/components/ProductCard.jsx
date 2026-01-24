@@ -20,41 +20,51 @@
 //   };
 
 //   return (
-//     <div className="card group">
+//     <div className="card group bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 //       <div className="relative overflow-hidden">
-//         {/* Product Image */}
+
+//         {/* 🔥 SALE BADGE */}
+//         {product.isOnSale && product.discount && (
+//           <span className="absolute top-3 left-3 z-10 bg-red-600 text-white text-xs px-2 py-1 rounded">
+//             {product.discount}% OFF
+//           </span>
+//         )}
+
+//         {/* PRODUCT IMAGE */}
 //         <img
 //           src={product.image}
 //           alt={product.name}
 //           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
 //         />
 
-//         {/* Action Buttons */}
-//         <div className="absolute top-2 right-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+//         {/* 💖 ACTION BUTTONS */}
+//         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
 //           <button
 //             onClick={handleWishlistToggle}
-//             className={`p-2 rounded-full ${
+//             className={`p-2 rounded-full shadow-md transition ${
 //               inWishlist
 //                 ? "bg-red-100 text-red-600"
-//                 : "bg-white text-gray-600"
-//             } shadow-md`}
+//                 : "bg-white text-gray-600 hover:bg-gray-100"
+//             }`}
 //           >
-//             <Heart className={`w-5 h-5 ${inWishlist ? "fill-current" : ""}`} />
+//             <Heart
+//               className={`w-5 h-5 ${inWishlist ? "fill-current scale-110" : ""}`}
+//             />
 //           </button>
 
 //           <Link
 //             to={`/product/${product.id}`}
-//             className="p-2 bg-white text-gray-600 rounded-full shadow-md"
+//             className="p-2 bg-white text-gray-600 rounded-full shadow-md hover:bg-gray-100"
 //           >
 //             <Eye className="w-5 h-5" />
 //           </Link>
 //         </div>
 
-//         {/* Add to Cart */}
+//         {/* 🛒 ADD TO CART (HOVER) */}
 //         <div className="absolute bottom-0 left-0 right-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 p-4">
 //           <button
 //             onClick={() => addToCart(product, 1)}
-//             className="w-full bg-black text-white py-2 rounded flex items-center justify-center gap-2"
+//             className="w-full bg-black text-white py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition"
 //           >
 //             <ShoppingCart className="w-4 h-4" />
 //             Add to Cart
@@ -62,10 +72,10 @@
 //         </div>
 //       </div>
 
-//       {/* Product Info */}
+//       {/* 📦 PRODUCT INFO */}
 //       <div className="p-4">
 //         <Link to={`/product/${product.id}`}>
-//           <h3 className="font-medium text-gray-800 hover:text-pink-600 mb-1">
+//           <h3 className="font-medium text-gray-800 hover:text-pink-600 mb-1 truncate">
 //             {product.name}
 //           </h3>
 //         </Link>
@@ -74,21 +84,34 @@
 
 //         <div className="flex items-center justify-between mb-2">
 //           <Rating rating={product.rating} />
-//           <span className="text-sm text-gray-500">
+//           <span className="text-xs text-gray-500">
 //             {product.reviews} reviews
 //           </span>
 //         </div>
 
+//         {/* 💰 PRICE SECTION */}
 //         <div className="flex items-center justify-between">
-//           <span className="text-lg font-bold text-gray-900">
-//             ₹{product.price}
-//           </span>
+//           {product.isOnSale ? (
+//             <div className="flex items-center gap-2">
+//               <span className="text-lg font-bold text-red-500">
+//                 ₹{product.price}
+//               </span>
+//               <span className="text-sm line-through text-gray-400">
+//                 ₹{product.originalPrice}
+//               </span>
+//             </div>
+//           ) : (
+//             <span className="text-lg font-bold text-gray-900">
+//               ₹{product.price}
+//             </span>
+//           )}
 
+//           {/* SIZES */}
 //           <div className="flex gap-1">
 //             {product.sizes?.map((size) => (
 //               <span
 //                 key={size}
-//                 className="text-xs px-2 py-1 border rounded"
+//                 className="text-xs px-2 py-1 border rounded text-gray-600"
 //               >
 //                 {size}
 //               </span>
@@ -106,7 +129,6 @@
 
 
 
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Heart, Eye } from "lucide-react";
@@ -114,7 +136,7 @@ import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import Rating from "./Rating";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onView }) => {
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
@@ -132,22 +154,24 @@ const ProductCard = ({ product }) => {
     <div className="card group bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
       <div className="relative overflow-hidden">
 
-        {/* 🔥 SALE BADGE */}
+        {/* SALE BADGE */}
         {product.isOnSale && product.discount && (
           <span className="absolute top-3 left-3 z-10 bg-red-600 text-white text-xs px-2 py-1 rounded">
             {product.discount}% OFF
           </span>
         )}
 
-        {/* PRODUCT IMAGE */}
+        {/* IMAGE */}
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
 
-        {/* 💖 ACTION BUTTONS */}
+        {/* ACTION BUTTONS */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
+
+          {/* WISHLIST */}
           <button
             onClick={handleWishlistToggle}
             className={`p-2 rounded-full shadow-md transition ${
@@ -161,15 +185,19 @@ const ProductCard = ({ product }) => {
             />
           </button>
 
-          <Link
-            to={`/product/${product.id}`}
+          {/* 👁 QUICK VIEW (NO LINK, NO NAVIGATION) */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // 🚨 MOST IMPORTANT
+              onView?.(product);
+            }}
             className="p-2 bg-white text-gray-600 rounded-full shadow-md hover:bg-gray-100"
           >
             <Eye className="w-5 h-5" />
-          </Link>
+          </button>
         </div>
 
-        {/* 🛒 ADD TO CART (HOVER) */}
+        {/* ADD TO CART */}
         <div className="absolute bottom-0 left-0 right-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 p-4">
           <button
             onClick={() => addToCart(product, 1)}
@@ -181,8 +209,9 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      {/* 📦 PRODUCT INFO */}
+      {/* PRODUCT INFO */}
       <div className="p-4">
+        {/* Product name can still navigate */}
         <Link to={`/product/${product.id}`}>
           <h3 className="font-medium text-gray-800 hover:text-pink-600 mb-1 truncate">
             {product.name}
@@ -198,34 +227,10 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
 
-        {/* 💰 PRICE SECTION */}
         <div className="flex items-center justify-between">
-          {product.isOnSale ? (
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-red-500">
-                ₹{product.price}
-              </span>
-              <span className="text-sm line-through text-gray-400">
-                ₹{product.originalPrice}
-              </span>
-            </div>
-          ) : (
-            <span className="text-lg font-bold text-gray-900">
-              ₹{product.price}
-            </span>
-          )}
-
-          {/* SIZES */}
-          <div className="flex gap-1">
-            {product.sizes?.map((size) => (
-              <span
-                key={size}
-                className="text-xs px-2 py-1 border rounded text-gray-600"
-              >
-                {size}
-              </span>
-            ))}
-          </div>
+          <span className="text-lg font-bold text-gray-900">
+            ₹{product.price}
+          </span>
         </div>
       </div>
     </div>
